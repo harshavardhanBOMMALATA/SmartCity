@@ -75,38 +75,31 @@ WSGI_APPLICATION = 'smartcity.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-if os.environ.get("RENDER_ENV") == "production":
-    # --------------------------
-    # PRODUCTION (Render + Railway MySQL)
-    # --------------------------
+
+if os.environ.get("RENDER"):
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQLDATABASE'),
-        'USER': os.environ.get('MYSQLUSER'),
-        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
-        'HOST': os.environ.get('MYSQLHOST'),
-        'PORT': os.environ.get('MYSQLPORT'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        },
-    }
-}
-else:
-    # --------------------------
-    # LOCAL DEVELOPMENT (Your Laptop MySQL)
-    # --------------------------
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'smartcity',
-            'USER': 'root',
-            'PASSWORD': 'password',  # password
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
-            'OPTIONS': {
-                'charset': 'utf8mb4',
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("MYSQLDATABASE"),
+            "USER": os.environ.get("MYSQLUSER"),
+            "PASSWORD": os.environ.get("MYSQLPASSWORD"),
+            "HOST": os.environ.get("MYSQLHOST"),
+            "PORT": os.environ.get("MYSQLPORT"),
+            "OPTIONS": {
+                "charset": "utf8mb4",
             },
+        }
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": "smartcity",
+            "USER": "root",
+            "PASSWORD": "password",
+            "HOST": "127.0.0.1",
+            "PORT": "3306",
+            "OPTIONS": {"charset": "utf8mb4"},
         }
     }
 
