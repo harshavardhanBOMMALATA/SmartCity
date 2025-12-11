@@ -15,5 +15,5 @@ class Users(models.Model):
     address = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'users'
+        managed = True
