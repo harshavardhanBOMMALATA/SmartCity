@@ -80,18 +80,18 @@ if os.environ.get("RENDER_ENV") == "production":
     # PRODUCTION (Render + Railway MySQL)
     # --------------------------
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get('railway'),
-            'USER': os.environ.get('root'),
-            'PASSWORD': os.environ.get('OtEgFptYGsbGVdogqkKsLicFhAGCtaxn'),
-            'HOST': os.environ.get('mysql.railway.internal'),
-            'PORT': os.environ.get('3306', '3306'),
-            'OPTIONS': {
-                'charset': 'utf8mb4',
-            },
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQLDATABASE'),
+        'USER': os.environ.get('MYSQLUSER'),
+        'PASSWORD': os.environ.get('MYSQLPASSWORD'),
+        'HOST': os.environ.get('MYSQLHOST'),
+        'PORT': os.environ.get('MYSQLPORT'),
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        },
     }
+}
 else:
     # --------------------------
     # LOCAL DEVELOPMENT (Your Laptop MySQL)

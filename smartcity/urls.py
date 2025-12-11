@@ -16,10 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from database.views import hello
+from .views import hello   # IMPORT FROM SMARTCITY
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hello),   # DEFAULT HOME PAGE VIEW
+    path('', hello),       # DEFAULT VIEW
 ]
-
