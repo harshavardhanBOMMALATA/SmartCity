@@ -73,8 +73,6 @@ WSGI_APPLICATION = 'smartcity.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 
 if os.environ.get("RENDER"):
     DATABASES = {
@@ -83,8 +81,8 @@ if os.environ.get("RENDER"):
             "NAME": os.environ.get("MYSQLDATABASE"),
             "USER": os.environ.get("MYSQLUSER"),
             "PASSWORD": os.environ.get("MYSQLPASSWORD"),
-            "HOST": os.environ.get("MYSQLHOST"),
-            "PORT": os.environ.get("MYSQLPORT"),
+            "HOST": "interchange.proxy.rlwy.net",   # PUBLIC HOST
+            "PORT": "56546",                        # PUBLIC PORT
             "OPTIONS": {
                 "charset": "utf8mb4",
             },
