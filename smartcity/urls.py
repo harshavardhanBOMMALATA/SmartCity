@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import hello   # IMPORT FROM SMARTCITY
+from . import views # IMPORT FROM SMARTCITY
+from . import api_views as api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', hello),       # DEFAULT VIEW
+    path('', views.login,name='login'),    # DEFAULT VIEW
+    path('signup/', views.signup,name='signup'),    # SIGNUP VIEW
+    path('api/login/',api.login_api),
+    path('api/signup/',api.signup)
 ]
