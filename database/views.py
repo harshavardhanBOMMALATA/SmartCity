@@ -1,5 +1,5 @@
-from database.models import Users
-from django.http import HttpResponse
+from database.models import Users,Posts
+from django.http import HttpResponse,JsonResponse
 
 def check_user_credentials(email, password):
     try:
@@ -28,3 +28,8 @@ def register_user(email, name, phonenumber, password, address):
             return "0"   # success
         except Exception:
             return "1"   # insert error
+
+def view_posts(request):
+    content=Posts.objects.all().values()
+    content=list(content)
+    return JsonResponse({'content':content},safe=False)

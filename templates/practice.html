@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartCity – Posts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: #f7f9f9;
+        }
+
+        .page-title {
+            padding: 20px;
+            font-size: 24px;
+            font-weight: 800;
+            color: #1d9bf0;
+        }
+
+        .cards-container {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .post-card {
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #e6ecf0;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        /* ⭐ HOVER EFFECT */
+        .post-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.15);
+        }
+
+        .image-box {
+            width: 100%;
+            height: 180px;
+            background: #e6ecf0;
+            overflow: hidden;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        /* ⭐ IMAGE ZOOM ON HOVER */
+        .post-card:hover .image-box img {
+            transform: scale(1.08);
+        }
+
+        .post-content {
+            padding: 16px;
+        }
+
+        .post-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f1419;
+            margin-bottom: 6px;
+            transition: color 0.2s ease;
+        }
+
+        /* ⭐ TITLE COLOR CHANGE */
+        .post-card:hover .post-title {
+            color: #1d9bf0;
+        }
+
+        .post-desc {
+            font-size: 14px;
+            color: #536471;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .post-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 13px;
+            color: #536471;
+        }
+        .post-card {
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="page-title">Community Posts</div>
+
+<div class="cards-container" id="cardsContainer"></div>
+
+<script>
+    const posts = [
+        {
+            title: "Road Damage",
+            description: "Large potholes causing traffic congestion during peak hours.",
+            location: "Bengaluru",
+            author: "arjun@example.com",
+            image: "https://via.placeholder.com/400x200"
+        },
+        {
+            title: "Garbage Overflow",
+            description: "Garbage bins overflowing near residential areas.",
+            location: "Hyderabad",
+            author: "mira@example.com",
+            image: ""
+        },
+        {
+            title: "Street Light Issue",
+            description: "Street lights not working for the past three days.",
+            location: "Chennai",
+            author: "rahul@example.com",
+            image: "https://via.placeholder.com/400x200"
+        }
+    ];
+
+    const container = document.getElementById("cardsContainer");
+
+    posts.forEach(post => {
+        const card = document.createElement("div");
+        card.className = "post-card";
+
+        card.innerHTML = `
+            <div class="image-box">
+                ${post.image ? `<img src="${post.image}">` : ``}
+            </div>
+            <div class="post-content">
+                <div class="post-title">${post.title}</div>
+                <div class="post-desc">${post.description}</div>
+                <div class="post-meta">
+                    <div>📍 ${post.location}</div>
+                    <div>👤 ${post.author}</div>
+                </div>
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
+</script>
+
+</body>
+</html>

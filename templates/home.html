@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartCity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">SmartCity</div>
+
+    <nav class="nav" id="navMenu">
+        <a href="#">Profile</a>
+        <a href="#">My Posts</a>
+        <a href="#">Post Assistant</a>
+        <a href="#">Sign Out</a>
+    </nav>
+
+    <div class="hamburger" id="hamburger">☰</div>
+</header>
+
+<!-- PAGE TITLE -->
+<div class="page-title">Community Posts</div>
+
+<!-- CARDS -->
+<div class="cards-container" id="cardsContainer">
+    <!-- Cards will be injected by JS -->
+</div>
+<!-- ADD POST BUTTON -->
+<div class="add-post-btn">＋</div>
+
+<style>
+.add-post-btn{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background: #0d6efd;
+    color: #fff;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1000;
+}
+.add-post-btn:hover{
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+</style>
+
+<!-- JS -->
+<script src="{% static 'scripts/home.js' %}"></script>
+
+</body>
+</html>

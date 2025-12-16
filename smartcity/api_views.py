@@ -2,6 +2,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
 import json
 from database.views import check_user_credentials,register_user
+from database import views as db_views
 
 
 
@@ -13,6 +14,7 @@ def login_api(request):
             email=data.get('email')
             password=data.get('password')
             if(check_user_credentials(email,password)):
+                request.session['user_email']=email
                 return JsonResponse({'status':'success','message':'Login successful'},status=200)
             else:
                 return JsonResponse({'status':'failure','message':'Invalid credentials'},status=401)
@@ -60,3 +62,22 @@ def signup(request):
         {'status': 'failure', 'message': 'Invalid request method'},
         status=405
     ) 
+
+def posts(request):
+    sample_posts = [
+        {
+            'id': 1,
+            'title': 'Community Clean-Up Event',
+            'content': 'Join us this Saturday for a community clean-up event at the central park.',
+            'author': 'John Doe',
+            'date_posted': '2024-06-01'
+        },
+        {
+            'id': 2,
+            'title': 'New Bike Lanes Installed',
+            'content': 'The city has installed new bike lanes on Main Street to promote eco-friendly transportation.',
+            'author': 'Jane Smith',
+            'date_posted': '2024-06-02'
+        }
+    ]
+    return db_views.view_posts(request)

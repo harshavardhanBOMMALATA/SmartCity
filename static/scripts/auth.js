@@ -20,8 +20,7 @@ if (loginForm) {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                document.getElementsByClassName('message')[0].innerText =
-                    'Login successful!';
+                window.location.href = '/home/';
             } else {
                 document.getElementsByClassName('message')[0].innerText =
                     'Login failed';

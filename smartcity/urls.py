@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from . import views # IMPORT FROM SMARTCITY
 from . import api_views as api
 
@@ -24,5 +24,7 @@ urlpatterns = [
     path('', views.login,name='login'),    # DEFAULT VIEW
     path('signup/', views.signup,name='signup'),    # SIGNUP VIEW
     path('api/login/',api.login_api),
-    path('api/signup/',api.signup)
+    path('api/signup/',api.signup),
+    path('home/',include('home.urls')),
+    path('api/posts/',api.posts),
 ]
