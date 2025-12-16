@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile</title>
+<link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+</head>
+
+<body>
+
+<div class="profile-wrapper">
+
+    <div class="profile-image">
+        <img id="profileImg" src="{% static 'images/default_profile.png' %}">
+        <button onclick="changePhoto()">Edit Photo</button>
+        <input type="file" id="photoInput" hidden>
+    </div>
+
+    <div class="profile-details">
+
+        <div class="field">
+            <div class="label">Name</div>
+            <div class="value" id="nameText">Harshavardhan</div>
+            <input id="nameInput" value="name">
+            <span class="edit" onclick="editField('name')">Edit</span>
+        </div>
+
+        <div class="field">
+            <div class="label">Email</div>
+            <div class="value" id="emailText">user@email.com</div>
+        </div>
+
+        <div class="field">
+            <div class="label">Phone</div>
+            <div class="value" id="phoneText">9876543210</div>
+            <input id="phoneInput" value="123456789">
+            <span class="edit" onclick="editField('phone')">Edit</span>
+        </div>
+
+        <div class="field">
+            <div class="label">Address</div>
+            <div class="value" id="addressText">Andhra Pradesh, India</div>
+            <input id="addressInput" value="address">
+            <span class="edit" onclick="editField('address')">Edit</span>
+        </div>
+
+        <div class="submit-wrapper">
+            <button class="submit" id="submitBtn" onclick="submitProfile()">Submit</button>
+        </div>
+
+    </div>
+
+</div>
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+<script src="{% static 'scripts/profile.js' %}"></script>
+</body>
+</html>

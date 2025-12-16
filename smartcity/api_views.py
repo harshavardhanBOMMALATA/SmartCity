@@ -1,10 +1,10 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
 import json
-from database.views import check_user_credentials,register_user
+from database.views import check_user_credentials,register_user,post_creation
 from database import views as db_views
-
-
+import random
+from database.models import Users, Posts
 
 @csrf_exempt
 def login_api(request):
@@ -81,3 +81,26 @@ def posts(request):
         }
     ]
     return db_views.view_posts(request)
+
+@csrf_exempt
+def new_post(request):
+    email=request.session.get('user_email','')
+    if(email==""):
+        return JsonResponse({'status':'logout','message':'User not logged in'},status=401)
+    post_id=random.randint(1000,9999)
+    while(Posts.objects.filter(id=post_id).exists()):
+        post_id=random.randint(1000,9999)
+    if request.method=='POST':
+        try:
+            data=json.loads(request.body)
+            title=data.get('title')
+            description=data.get('description')
+            short_description=data.get('short_description','')
+            location=data.get('location','')
+            time=data.get('time','')
+            photo=data.get('photo','')
+            return post_creation(post_id,title,description,location,email,photo,short_description,time)
+        except Exception as e:
+            return JsonResponse({'status':'error','message':str(e)},status=400)
+    else:
+        return JsonResponse({'status':'error','message':'Invalid request method'},status=405)

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'styles/new_post.css' %}">
+</head>
+<body>
+
+<div class="page">
+    <div class="form-container">
+        <h2>Create New Post</h2>
+        <div class="hint"></div>
+
+        <form id="postForm">
+            <div class="field">
+                <input type="text" id="title" placeholder="Post Title" required>
+            </div>
+
+            <div class="field">
+                <input type="text" id="shortdescription" placeholder="Short Description" required>
+            </div>
+
+            <div class="field">
+                <textarea id="description" placeholder="Full Description" required></textarea>
+            </div>
+
+            <div class="field">
+                <input type="text" id="location" placeholder="Location" required>
+            </div>
+
+            <button type="submit">Submit Post</button>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'scripts/new_post.js' %}"></script>
+</body>
+</html>

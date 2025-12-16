@@ -27,4 +27,8 @@ urlpatterns = [
     path('api/signup/',api.signup),
     path('home/',include('home.urls')),
     path('api/posts/',api.posts),
+    path('home/post/', include('postings.urls')),
+    path('api/new_post/',api.new_post),
+    path('signout/',views.signout,name='signout'),
+    path('home/profile/',include('userprofile.urls')),
 ]

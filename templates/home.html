@@ -15,10 +15,10 @@
     <div class="logo">SmartCity</div>
 
     <nav class="nav" id="navMenu">
-        <a href="#">Profile</a>
+        <a href="{% url 'userprofile:profile' %}">Profile</a>
         <a href="#">My Posts</a>
         <a href="#">Post Assistant</a>
-        <a href="#">Sign Out</a>
+        <a href="{% url 'signout' %}">Sign Out</a>
     </nav>
 
     <div class="hamburger" id="hamburger">☰</div>
@@ -32,7 +32,7 @@
     <!-- Cards will be injected by JS -->
 </div>
 <!-- ADD POST BUTTON -->
-<div class="add-post-btn">＋</div>
+<div class="add-post-btn"><a href="{% url 'postings:postings_home' %}" style="text-decoration:none;color:white">+</a></div>
 
 <style>
 .add-post-btn{

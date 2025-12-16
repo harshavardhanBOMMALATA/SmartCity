@@ -9,3 +9,10 @@ def login(request):
 
 def signup(request):
     return render(request, 'signup.html')
+
+def signout(request):
+    try:
+        del request.session['user_email']
+    except KeyError:
+        pass
+    return render(request, 'login.html')

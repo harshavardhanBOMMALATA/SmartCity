@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'smartcity',
     'database',
     'rest_framework',
+    'home',
+    'postings',
+    'userprofile',
 ]
 
 MIDDLEWARE = [

@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${post.image ? `<img src="${post.image}" alt="Post Image">` : ``}
                     </div>
                     <div class="post-content">
-                        <div class="post-title">${post.title}</div>
-                        <div class="post-desc">${post.content}</div>
+                        <div class="post-title">${post.id} ${post.title}</div>
+                        <div class="post-desc">${post.shortdescription}</div>
                         <div class="post-meta">
                             <div>📍 ${post.location}</div>
-                            <div>👤 ${post.author}</div>
+                            <div>👤 ${post.author_email}</div>
                         </div>
                     </div>
                 `;
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     card.style.transform = "translateY(-5px)";
                     card.style.boxShadow = "0 8px 20px rgba(0,0,0,0.25)";
                 });
-                
+
                 card.addEventListener("mouseleave", () => {
                     card.style.transform = "translateY(0)";
                     card.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
