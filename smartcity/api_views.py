@@ -14,7 +14,8 @@ def login_api(request):
             email=data.get('email')
             password=data.get('password')
             if(check_user_credentials(email,password)):
-                request.session['user_email']=email
+                request.session.flush()
+                request.session['email']=email
                 return JsonResponse({'status':'success','message':'Login successful'},status=200)
             else:
                 return JsonResponse({'status':'failure','message':'Invalid credentials'},status=401)

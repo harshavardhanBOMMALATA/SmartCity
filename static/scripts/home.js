@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.className = "card";
 
                 card.innerHTML = `
-                    <div class="image-box">
+                    <div class="image-box" onclick="gotopost(${post.id})">
                         ${post.image ? `<img src="${post.image}" alt="Post Image">` : ``}
                     </div>
-                    <div class="post-content">
+                    <div class="post-content" onclick="gotopost(${post.id})">
                         <div class="post-title">${post.id} ${post.title}</div>
                         <div class="post-desc">${post.shortdescription}</div>
                         <div class="post-meta">
@@ -52,3 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error fetching posts:", error);
         });
 });
+
+
+function gotopost(id){
+    window.location.href = `/post/${id}/`;
+}

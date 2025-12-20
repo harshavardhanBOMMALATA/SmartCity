@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{% static 'styles/auth.css' %}">
 </head>
 <body>
+    {% if message %}
+    {{ message }}
+    {% endif %}
     <div class="auth-box">
         <h2>SmartCity</h2>
 

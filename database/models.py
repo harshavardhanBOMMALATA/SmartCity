@@ -139,3 +139,26 @@ class Users(models.Model):
     class Meta:
         managed = False
         db_table = 'users'
+
+class PostVerdict(models.Model):
+    post = models.ForeignKey('Posts', models.DO_NOTHING, blank=True, null=True)
+    email = models.CharField(max_length=255, blank=True, null=True)
+    verdict = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'post_verdict'
+
+class Chats(models.Model):
+    post = models.ForeignKey(
+        'Posts',
+        on_delete=models.CASCADE,
+        db_column='post_id',
+        related_name='chats'
+    )
+    message = models.TextField()
+    time_stamp = models.DateTimeField(auto_now_add=True)
+    type = models.CharField(max_length=10)
+
+    class Meta:
+        db_table = 'chats'

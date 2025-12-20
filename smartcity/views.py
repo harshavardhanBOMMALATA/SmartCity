@@ -12,7 +12,8 @@ def signup(request):
 
 def signout(request):
     try:
-        del request.session['user_email']
+        if(request.session is not None):
+                request.session.flush()
     except KeyError:
         pass
     return render(request, 'login.html')

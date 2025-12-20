@@ -9,14 +9,16 @@
     <link rel="stylesheet" href="{% static 'styles/home.css' %}">
 </head>
 <body>
-
+{% if message  %}
+    <script>alert("{{ message }}");</script>
+{% endif %}
 <!-- HEADER -->
 <header class="header">
     <div class="logo">SmartCity</div>
 
     <nav class="nav" id="navMenu">
         <a href="{% url 'userprofile:profile' %}">Profile</a>
-        <a href="#">My Posts</a>
+        <a href="{% url 'post:myposts' %}">My Posts</a>
         <a href="#">Post Assistant</a>
         <a href="{% url 'signout' %}">Sign Out</a>
     </nav>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Posts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", sans-serif;
+}
+
+body{
+    background:#f7f9f9;
+    padding:22px;
+}
+
+/* PAGE TITLE */
+.page-title{
+    font-size:26px;
+    font-weight:800;
+    color:#1d9bf0;
+    margin-bottom:24px;
+    text-align:left;
+}
+
+/* GRID */
+.cards-container{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:24px;
+}
+
+/* CARD */
+.post-card{
+    background:#ffffff;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid #e6ecf0;
+    box-shadow:0 6px 16px rgba(0,0,0,0.08);
+    cursor:pointer;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.post-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 14px 32px rgba(0,0,0,0.15);
+}
+
+/* IMAGE */
+.image-box{
+    width:100%;
+    height:180px;
+    background:#e6ecf0;
+    overflow:hidden;
+}
+
+.image-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.4s ease;
+}
+
+.post-card:hover .image-box img{
+    transform:scale(1.08);
+}
+
+/* CONTENT */
+.post-content{
+    padding:16px;
+}
+
+.post-title{
+    font-size:18px;
+    font-weight:700;
+    color:#0f1419;
+    margin-bottom:6px;
+    transition:color 0.2s ease;
+}
+
+.post-card:hover .post-title{
+    color:#1d9bf0;
+}
+
+.post-desc{
+    font-size:14px;
+    color:#536471;
+    margin-bottom:12px;
+    line-height:1.4;
+}
+
+/* META */
+.post-meta{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:#536471;
+}
+
+.post-location{
+    background:#e6ecf0;
+    padding:4px 10px;
+    border-radius:14px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- CHANGE TITLE AS NEEDED -->
+<div class="page-title">My Posts</div>
+<!-- <div class="page-title">All Posts</div> -->
+
+<div class="cards-container" id="cardsContainer">
+    <!-- Cards injected by JS -->
+</div>
+
+<script>
+/* SAMPLE DATA FOR UI */
+const posts = [
+    {
+        id:1,
+        title:"Broken road near metro station",
+        desc:"Road damage causing heavy traffic during morning hours.",
+        location:"Hyderabad",
+        image:"https://picsum.photos/400/300?1"
+    },
+    {
+        id:2,
+        title:"Garbage not collected",
+        desc:"Garbage bins are overflowing for the past 3 days.",
+        location:"Bangalore",
+        image:"https://picsum.photos/400/300?2"
+    },
+    {
+        id:3,
+        title:"Street lights not working",
+        desc:"Several lights are off, area is unsafe at night.",
+        location:"Chennai",
+        image:"https://picsum.photos/400/300?3"
+    }
+];
+
+const container = document.getElementById("cardsContainer");
+
+posts.forEach(p=>{
+    const card = document.createElement("div");
+    card.className = "post-card";
+
+    card.innerHTML = `
+        <div class="image-box">
+            <img src="${p.image}">
+        </div>
+        <div class="post-content">
+            <div class="post-title">${p.title}</div>
+            <div class="post-desc">${p.desc}</div>
+            <div class="post-meta">
+                <span>#${p.id}</span>
+                <span class="post-location">${p.location}</span>
+            </div>
+        </div>
+    `;
+
+    card.onclick = () => {
+        alert("Open post ID: " + p.id);
+    };
+
+    container.appendChild(card);
+});
+</script>
+
+</body>
+</html>

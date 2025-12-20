@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Posts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'styles/myposts.css' %}">
+</head>
+<body>
+
+<div class="page-title">My Posts</div>
+<div id="nohistory" style="display:none;">No posts found</div>
+
+<div class="cards-container" id="cardsContainer"></div>
+
+<script src="{% static 'scripts/myposts.js' %}"></script>
+</body>
+</html>

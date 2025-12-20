@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post Details</title>
+
+<link rel="stylesheet" href="{% static 'styles/post.css' %}">
+</head>
+
+<body>
+
+{{ post_id|json_script:"postID" }}
+
+<div class="post-container">
+
+    <h1 class="post-title" id="title"></h1>
+
+    <!-- CAROUSEL -->
+    <div class="carousel">
+        <button class="arrow left" onclick="moveSlide(-1)">❮</button>
+        <div class="carousel-track" id="carouselTrack">
+            <!-- Images injected by JS -->
+        </div>
+        <button class="arrow right" onclick="moveSlide(1)">❯</button>
+    </div>
+
+    <p class="post-description" id="description"></p>
+
+    <span class="read-more" id="readMoreBtn" onclick="toggleRead()">Read more</span>
+
+    <div class="post-author" id="author"></div>
+
+    <!-- VERDICTS -->
+    <div class="verdict-section">
+        <div class="verdict-btn" id="officialverdict">Official Verdict</div>
+        <div class="verdict-btn" id="pollverdict">Poll Verdict</div>
+    </div>
+
+    <!-- INDICATORS -->
+    <div class="indicator-section">
+        <div class="indicator"><span class="dot yes"></span> YES</div>
+        <div class="indicator"><span class="dot no"></span> NO</div>
+        <div class="indicator"><span class="dot pending"></span> PENDING</div>
+    </div>
+
+    <!-- POLL -->
+    <div class="poll-section">
+        <div class="poll-question">Do you agree with this post?</div>
+        <div id="pollresult" style="display:none">Thank you for Responding to this post</div>
+        <div class="poll-buttons">
+            <!-- ❌ removed inline onclick -->
+            <button class="agree" id="agreeBtn" onclick="trigger('0')">Agree</button>
+            <button class="disagree" id="disagreeBtn" onclick="trigger('1')">Disagree</button>
+        </div>
+
+        <div class="poll-result">
+            <div>Agree: <span id="agreeCount" class="yes">0</span></div>
+            <div>Disagree: <span id="disagreeCount" class="no">0</span></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- JS MUST be loaded after HTML -->
+<script src="{% static 'scripts/post.js' %}"></script>
+
+</body>
+</html>

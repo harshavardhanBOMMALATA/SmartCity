@@ -31,4 +31,5 @@ urlpatterns = [
     path('api/new_post/',api.new_post),
     path('signout/',views.signout,name='signout'),
     path('home/profile/',include('userprofile.urls')),
+    path('post/',include('post.urls')),
 ]
